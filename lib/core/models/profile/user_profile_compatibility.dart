@@ -1,0 +1,147 @@
+import '../enums.dart';
+import 'user_education_career.dart';
+import 'user_family_details.dart';
+import 'user_lineage_details.dart';
+import 'user_account_status.dart';
+
+mixin UserProfileCompatibilityMixin {
+  UserEducationCareer get educationCareer;
+  UserFamilyDetails get familyDetails;
+  UserLineageDetails get lineageDetails;
+  UserAccountStatus get accountStatusDetails;
+
+  // Lineage forwarding getters
+  int get fatherClanId => lineageDetails.fatherClanId;
+  int get motherClanId => lineageDetails.motherClanId;
+  String? get fatherTharavadu => lineageDetails.fatherTharavadu;
+  String? get motherTharavadu => lineageDetails.motherTharavadu;
+  String? get mothersTarawad => lineageDetails.mothersTarawad;
+  int? get ownIllamId => lineageDetails.ownIllamId;
+  int? get fatherIllamId => lineageDetails.fatherIllamId;
+  int? get motherIllamId => lineageDetails.motherIllamId;
+  bool get isOutOfCaste => lineageDetails.isOutOfCaste;
+  bool get hasFamilyRestriction => lineageDetails.hasFamilyRestriction;
+  List<String> get restrictedFamilies => lineageDetails.restrictedFamilies;
+  List<int> get restrictedTharavads => lineageDetails.restrictedTharavads;
+  List<int> get restrictedTharavaduIds => lineageDetails.restrictedTharavads;
+  String get tharavaduName => lineageDetails.tharavaduName;
+  int get tharavaduId => lineageDetails.tharavaduId;
+  String get maternalGroup => lineageDetails.maternalGroup;
+  String? get clan => lineageDetails.fatherTharavadu;
+  List<String> get eligibleTharavadsList => lineageDetails.eligibleTharavadsList;
+  bool get hasValidTharavadu => lineageDetails.hasValidTharavadu;
+
+  // Family forwarding getters
+  String? get fatherName => familyDetails.fatherName;
+  String? get motherName => familyDetails.motherName;
+  bool get isFatherDeceased => familyDetails.isFatherDeceased;
+  bool get isMotherDeceased => familyDetails.isMotherDeceased;
+  String? get houseName => familyDetails.houseName;
+  String get region => familyDetails.region;
+  String? get guardianPhone => familyDetails.guardianPhone;
+  String? get publicDisplayNumber => familyDetails.publicDisplayNumber;
+  int get childrenCount => familyDetails.childrenCount;
+  List<Map<String, dynamic>> get childrenDetails => familyDetails.childrenDetails;
+  bool get hasChildren => familyDetails.hasChildren;
+  bool get readyToAcceptChildren => familyDetails.readyToAcceptChildren;
+  String? get acceptChildrenStatus => familyDetails.acceptChildrenStatus;
+  String? get adoptionPreference => familyDetails.adoptionPreference;
+  String? get groomStayWifeHouse => familyDetails.groomStayWifeHouse;
+  String? get brideHusbandStayHome => familyDetails.brideHusbandStayHome;
+  String? get firstMarriageOpenToRemarriage => familyDetails.firstMarriageOpenToRemarriage;
+  String? get firstMarriageAdoptChildren => familyDetails.firstMarriageAdoptChildren;
+  String? get firstMarriageMaxChildren => familyDetails.firstMarriageMaxChildren;
+  String? get residencePreference => familyDetails.residencePreference;
+  String? get parentCarePreference => familyDetails.parentCarePreference;
+  String? get profileFor => familyDetails.profileFor;
+  String? get timeline => familyDetails.timeline;
+  bool get willingToStayAtBrideHome => familyDetails.willingToStayAtBrideHome;
+  bool get filterByBrideHomeWillingness => familyDetails.filterByBrideHomeWillingness;
+  bool get prefRelocateToBrideHome => familyDetails.prefRelocateToBrideHome;
+
+  // Preferences forwarding getters
+  int get prefAgeMin => familyDetails.prefAgeMin;
+  int get prefAgeMax => familyDetails.prefAgeMax;
+  String? get prefDistrict => familyDetails.prefDistrict;
+  String? get prefHabits => familyDetails.prefHabits;
+  bool? get prefJointFamily => familyDetails.prefJointFamily;
+  bool? get prefRelocate => familyDetails.prefRelocate;
+  bool? get prefManageJobFamily => familyDetails.prefManageJobFamily;
+  bool? get prefDirectTalk => familyDetails.prefDirectTalk;
+  bool? get prefNuclearFamily => familyDetails.prefNuclearFamily;
+  bool? get prefShareFinances => familyDetails.prefShareFinances;
+  bool? get prefNightShift => familyDetails.prefNightShift;
+  bool? get prefConsultDecisions => familyDetails.prefConsultDecisions;
+  bool? get prefDiscloseDebts => familyDetails.prefDiscloseDebts;
+  bool? get prefTravelSocialize => familyDetails.prefTravelSocialize;
+  String? get prefLocation => familyDetails.prefLocation;
+  String? get height => familyDetails.height;
+  String? get weight => familyDetails.weight;
+  int? get heightCm => familyDetails.heightCm;
+  int? get weightKg => familyDetails.weightKg;
+  String? get bloodGroup => familyDetails.bloodGroup;
+  String get physicalStatus => familyDetails.physicalStatus;
+  String? get smokingHabit => familyDetails.smokingHabit;
+  String? get drinkingHabit => familyDetails.drinkingHabit;
+  String? get confidentialPhotoUrl => familyDetails.confidentialPhotoUrl;
+  bool get adminOnlyMediator => familyDetails.adminOnlyMediator;
+  double? get homeLat => familyDetails.homeLat;
+  double? get homeLng => familyDetails.homeLng;
+  String? get digipin => familyDetails.digipin;
+
+  // Education / Career forwarding getters
+  String? get educationLevel => educationCareer.educationLevel;
+  String? get educationOtherText => educationCareer.educationOtherText;
+  String get job => educationCareer.job;
+  String? get careerSector => educationCareer.careerSector;
+  String? get annualIncome => educationCareer.annualIncome;
+  List<String>? get jobCategories => educationCareer.jobCategories;
+  bool get isJobVerified => educationCareer.isJobVerified;
+  String? get prefEducation => educationCareer.prefEducation;
+  String? get prefCareer => educationCareer.prefCareer;
+  String? get prefIncome => educationCareer.prefIncome;
+  String? get prefOccupation => educationCareer.prefOccupation;
+
+  // Account status forwarding getters
+  AccountStatus get accountStatus => accountStatusDetails.accountStatus;
+  ProfileStatus get profileStatus => accountStatusDetails.profileStatus;
+  String get registrationStatus => accountStatusDetails.registrationStatus;
+  String get verificationStatus => accountStatusDetails.verificationStatus;
+  bool? get isBlocked => accountStatusDetails.isBlocked;
+  String? get blockReason => accountStatusDetails.blockReason;
+  bool get isBanned => accountStatusDetails.isBanned;
+  String get role => accountStatusDetails.role;
+  String? get rejectionReason => accountStatusDetails.rejectionReason;
+  bool get isAgent => accountStatusDetails.isAgent;
+  String? get agentCode => accountStatusDetails.agentCode;
+  String? get agentApprovalStatus => accountStatusDetails.agentApprovalStatus;
+  Map<String, dynamic>? get pendingProfileEdits => accountStatusDetails.pendingProfileEdits;
+  String? get idDocumentUrl => accountStatusDetails.idDocumentUrl;
+  bool get isHidden => accountStatusDetails.isHidden;
+  bool get isProfileHidden => accountStatusDetails.isProfileHidden;
+  DateTime? get hiddenUntilDate => accountStatusDetails.hiddenUntilDate;
+  DateTime? get privacyExpiryDate => accountStatusDetails.privacyExpiryDate;
+  bool get isAutoRenewalEnabled => accountStatusDetails.isAutoRenewalEnabled;
+  bool get isNameLocked => accountStatusDetails.isNameLocked;
+  bool get allowPhotoEdit => accountStatusDetails.allowPhotoEdit;
+  bool get isDummy => accountStatusDetails.isDummy;
+  bool get isOnline => accountStatusDetails.isOnline;
+  bool get isBrokerFlagged => accountStatusDetails.isBrokerFlagged;
+  bool get isMarketingAllowed => accountStatusDetails.isMarketingAllowed;
+  String? get adminNotes => accountStatusDetails.adminNotes;
+  String? get adminCallNotes => accountStatusDetails.adminCallNotes;
+  DateTime? get deleteRequestedAt => accountStatusDetails.deleteRequestedAt;
+  bool get hideContactInfo => accountStatusDetails.hideContactInfo;
+  bool get allowDirectMessages => accountStatusDetails.allowDirectMessages;
+  bool get allowScreenshot => accountStatusDetails.allowScreenshot;
+  bool get videoCallEnabled => accountStatusDetails.videoCallEnabled;
+  String? get planTier => accountStatusDetails.planTier;
+  DateTime? get planExpiry => accountStatusDetails.planExpiry;
+  DateTime? get otpGeneratedAt => accountStatusDetails.otpGeneratedAt;
+  String? get whatsappOtp => accountStatusDetails.whatsappOtp;
+  String? get currentScreen => accountStatusDetails.currentScreen;
+  bool get isStealthActive => accountStatusDetails.isStealthActive;
+  DateTime? get stealthExpiryDate => accountStatusDetails.stealthExpiryDate;
+  String? get marriageType => accountStatusDetails.marriageType;
+  bool get isAdmin => accountStatusDetails.isAdmin;
+}

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+
+  <!-- Basic SEO Meta Tags -->
+  <meta charset="UTF-8">
+  <meta name="referrer" content="no-referrer">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Official Matrimony App and Website for the Kurichiyar community. Find trusted life partners.">
+  <meta name="keywords" content="kurichiyar matrimony, kuricharmatrimony, kurichiyar, matrimony kerala, wayanad matrimony, kurichiya matrimony">
+  <meta name="author" content="Kurichiyar Matrimony">
+  <meta name="google-site-verification" content="I0ExYGHqDAFpSML77S7_Llf9bM26wH1aFpv6X1ioNl4">
+  <meta name="google-signin-client_id" content="224732363568-2esu3ndodmul0j33u4fub8cpfsj263k6.apps.googleusercontent.com">
+
+  <!-- Social Media & Open Graph Tags -->
+  <meta property="og:title" content="Kurichiyar Matrimony">
+  <meta property="og:description" content="Find trusted life partners within the Kurichiyar community.">
+  <meta property="og:url" content="https://kuricharmatrimony.vercel.app/">
+  <meta property="og:type" content="website">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Kurichiyar Matrimony">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- Title -->
+  <title>Kurichiyar Matrimony - Trusted Community Matrimony</title>
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Cashfree Web Checkout SDK -->
+  <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3213077794211522"
+     crossorigin="anonymous"></script>
+
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <!-- Preload & Link Clean Web Fonts (Malayalam + Latin) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manjari:wght@400;700&family=Noto+Sans+Malayalam:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style id="splash-screen-style">
+    * {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    flt-glass-pane, flutter-view, canvas, flt-scene, flt-scene-host {
+      image-rendering: -webkit-optimize-contrast;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background-color: #000B4F;
+    }
+
+    .center {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    .pwa-install-banner {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #1a1a1a;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 999999;
+      font-family: sans-serif;
+    }
+
+    .pwa-install-text {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .pwa-install-btn {
+      background: #0070f3;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .pwa-close-btn {
+      background: transparent;
+      color: #888;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+
+  <script id="splash-screen-script">
+    function removeSplashFromWeb() {
+      document.getElementById("splash")?.remove();
+      document.getElementById("splash-branding")?.remove();
+    }
+  </script>
+
+  <script>
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      const existing = document.getElementById('pwa-install-banner');
+      if (existing) existing.remove();
+
+      const installBanner = document.createElement('div');
+      installBanner.id = 'pwa-install-banner';
+      installBanner.className = 'pwa-install-banner';
+
+      installBanner.innerHTML = `
+        <span class="pwa-install-text">ആപ്പ് ഇൻസ്റ്റാൾ ചെയ്യണോ?</span>
+        <button id="pwa-install-btn" class="pwa-install-btn">Install</button>
+        <button id="pwa-close-btn" class="pwa-close-btn">✕</button>
+      `;
+
+      document.body.appendChild(installBanner);
+
+      document.getElementById('pwa-install-btn').addEventListener('click', () => {
+        installBanner.remove();
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          deferredPrompt.userChoice.then((choiceResult) => {
+            deferredPrompt = null;
+          });
+        }
+      });
+
+      document.getElementById('pwa-close-btn').addEventListener('click', () => {
+        installBanner.remove();
+      });
+    });
+
+    // Register Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('firebase-messaging-sw.js').then(
+          function (registration) {
+            console.log('Firebase Messaging ServiceWorker registration successful with scope: ', registration.scope);
+          },
+          function (err) {
+            console.log('Firebase Messaging ServiceWorker registration failed: ', err);
+          }
+        );
+        navigator.serviceWorker.register('flutter_service_worker.js?v=' + Date.now()).then(
+          function (registration) {
+            console.log('Flutter ServiceWorker registration successful with scope: ', registration.scope);
+          },
+          function (err) {
+            console.log('Flutter ServiceWorker registration failed: ', err);
+          }
+        );
+      });
+    }
+    // Smart App Banner & Mobile Deep Link Auto-launch Logic
+    (function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const profileId = urlParams.get('id');
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+      if (profileId && isMobile) {
+        // Attempt custom scheme deep link launch
+        const appSchemeUrl = `kurichiyar://profile?id=${profileId}`;
+        const fallbackSchemeUrl = `kurichiyar-matrimony://profile?id=${profileId}`;
+        
+        try {
+          window.location.href = appSchemeUrl;
+        } catch (_) {
+          try { window.location.href = fallbackSchemeUrl; } catch (_) {}
+        }
+      }
+
+      // Display Sticky Top Smart App Banner on Web if profile is viewed
+      window.addEventListener('DOMContentLoaded', () => {
+        if (profileId || window.location.pathname.includes('/profile')) {
+          const smartBanner = document.createElement('div');
+          smartBanner.id = 'smart-app-banner';
+          smartBanner.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, #000B4F, #001A80);
+            color: #ffffff;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 9999999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            font-family: 'Noto Sans Malayalam', sans-serif;
+          `;
+          smartBanner.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 20px;">📱</span>
+              <div>
+                <div style="font-weight: bold; font-size: 13px;">കുറിച്ച്യർ മാട്രിമോണി ആപ്പ്</div>
+                <div style="font-size: 11px; opacity: 0.85;">ആപ്പിൽ കാണാൻ ഇൻസ്റ്റാൾ ചെയ്യുക</div>
+              </div>
+            </div>
+            <a href="https://pcm-wayanad-portal.surge.sh/" target="_blank" style="
+              background: #FFD700;
+              color: #000B4F;
+              padding: 6px 14px;
+              border-radius: 20px;
+              font-size: 12px;
+              font-weight: bold;
+              text-decoration: none;
+              white-space: nowrap;
+            ">Download App</a>
+          `;
+          document.body.prepend(smartBanner);
+        }
+      });
+    })();
+  </script>
+</head>
+<body>
+  <picture id="splash">
+    <source srcset="splash/img/light-1x.png 1x, splash/img/light-2x.png 2x, splash/img/light-3x.png 3x, splash/img/light-4x.png 4x" media="(prefers-color-scheme: light)">
+    <source srcset="splash/img/dark-1x.png 1x, splash/img/dark-2x.png 2x, splash/img/dark-3x.png 3x, splash/img/dark-4x.png 4x" media="(prefers-color-scheme: dark)">
+    <img class="center" aria-hidden="true" src="splash/img/light-1x.png" alt="">
+  </picture>
+
+  <script>
+    window.flutterWebRenderer = "canvaskit";
+    window._flutter = window._flutter || {};
+    window._flutter.buildConfig = {
+      renderer: "canvaskit"
+    };
+  </script>
+  <script src="flutter_bootstrap.js" async=""></script>
+</body>
+</html>

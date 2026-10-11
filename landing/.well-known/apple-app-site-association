@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "8T4U3Y98E3.com.example.kurichiyarMatrimony",
+        "paths": ["/profile/*", "/p/*"]
+      }
+    ]
+  }
+}

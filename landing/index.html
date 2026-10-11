@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurichiyar Matrimony - Official App</title>
+    <meta name="description" content="Discover verified life partners from the Kurichiyar community. Clean, secure, and authentic matrimonial profiles.">
+    <meta name="keywords" content="Kurichiyar, Matrimony, Wayanad marriage, tribal matrimony">
+    <meta name="robots" content="index, follow">
+    <link id="canonicalUrl" rel="canonical" href="https://pcm-wayanad-portal.surge.sh/">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Kurichiyar Matrimony - Official App">
+    <meta property="og:description" content="Discover verified life partners from the Kurichiyar community. Clean, secure, and authentic matrimonial profiles.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pcm-wayanad-portal.surge.sh/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=150">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kurichiyar Matrimony - Official App">
+    <meta name="twitter:description" content="Discover verified life partners from the Kurichiyar community. Clean, secure, and authentic matrimonial profiles.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=150">
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" id="structuredData"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.8/dist/umd/supabase.js" integrity="sha384-b4JKVkST7Jkb2qRVyZEamH2WA+trxThEkVN6z3JXWfUDFNZd14MnE/qRvt/zy2J5" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-blue: #0a1128;
+            --deep-midnight: #000411;
+            --gold: #D4AF37;
+            --soft-gold: #FBF5B7;
+            --white: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary-blue), var(--deep-midnight));
+            color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><path d="M30 0L60 30L30 60L0 30Z" fill="none" stroke="white" stroke-width="0.5" opacity="0.05"/></svg>');
+            z-index: -1;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            padding: 40px 20px;
+        }
+
+        .profile-container {
+            display: none;
+            margin-bottom: 30px;
+        }
+
+        .logo-container {
+            background: var(--white);
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+            border: 4px solid var(--gold);
+            overflow: hidden;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .icon-placeholder {
+            font-size: 40px;
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            background: linear-gradient(to bottom, var(--soft-gold), var(--gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        .profile-info {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--soft-gold);
+        }
+
+        .profile-clan {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-bottom: 30px;
+        }
+
+        p.tagline {
+            font-size: 16px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .btn {
+            padding: 18px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn:active { transform: scale(0.98); }
+
+        .btn-primary {
+            background-color: var(--gold);
+            color: var(--primary-blue);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+        }
+
+        .coming-soon {
+            font-size: 11px;
+            color: var(--gold);
+            margin-top: -8px;
+            margin-bottom: 8px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        .footer {
+            margin-top: 60px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 1px;
+        }
+
+        #content {
+            display: none;
+        }
+
+        #directorySection {
+            display: none;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+
+        #directoryList {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: left;
+            max-height: 250px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .directory-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px;
+            border-radius: 5px;
+            background: #161c2e;
+            display: block;
+            transition: background 0.2s;
+        }
+
+        .directory-link:hover {
+            background: #1e293b;
+        }
+
+        .directory-span {
+            opacity: 0.7;
+            font-size: 12px;
+            float: right;
+        }
+
+        .badge {
+            background: #064e3b;
+            color: #4ade80;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+            border: 1px solid #14532d;
+        }
+
+        .directory-header {
+            color: var(--gold);
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-left-color: var(--gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="mainContainer">
+        <div id="loader">
+            <div class="loading-spinner"></div>
+            <p>Loading Profile...</p>
+        </div>
+
+        <div id="content">
+            <div class="logo-container" id="avatarContainer">
+                <div class="icon-placeholder">KM</div>
+            </div>
+
+            <div class="badge" id="topBadge">TRUSTED COMMUNITY NETWORK</div>
+
+            <h1 id="mainTitle">Kurichiyar Matrimony</h1>
+            <div id="profileDetails" class="profile-container">
+                <div class="profile-info" id="profileNameAge"></div>
+                <div class="profile-clan" id="profileClan"></div>
+            </div>
+
+            <p class="tagline" id="tagline">Preserving Heritage, Connecting Souls</p>
+
+            <div class="actions">
+                <a href="kurichiyar-matrimony://open" class="btn btn-primary" id="openApp">
+                    <span>OPEN IN APP</span>
+                </a>
+
+                <a href="#" class="btn btn-secondary" id="downloadAppBtn">DOWNLOAD FOR ANDROID</a>
+                <div class="coming-soon">COMING SOON ON GOOGLE PLAY STORE</div>
+
+                <a href="#" class="btn btn-secondary">VISIT WEBSITE</a>
+            </div>
+
+            <div class="footer">
+                100% SECURE & VERIFIED PROFILES
+            </div>
+
+            <!-- Profile Directory Section for Search Engine Crawler Discovery -->
+            <div id="directorySection">
+                <h3 class="directory-header">PUBLIC PROFILES DIRECTORY</h3>
+                <div id="directoryList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const SUPABASE_URL = 'https://wrcunzhxkpxkjkayaarc.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndyY3Vuemh4a3B4a2prYXlhYXJjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5NTg3NzksImV4cCI6MjA5ODUzNDc3OX0.ajrvTQOshMjuTwNU0E3FBUjW4X0dxlXOWa_Ib0ZuLKE';
+
+        let supabase;
+
+        function getProfileIdFromUrl() {
+            // 1. Check query parameter: ?id=km-2026-c1 or ?id=c1
+            const urlParams = new URLSearchParams(globalThis.location.search);
+            let profileId = urlParams.get('id');
+            if (profileId) return profileId;
+
+            // 2. Check pathname: /profile/km-2026-c1 or /p/km-2026-c1 or /profile/c1 or /p/c1
+            const path = globalThis.location.pathname;
+            const pathMatch = path.match(/\/(profile|p)\/(km-2026-[\w-]+|[\w-]+)/i);
+            if (pathMatch && pathMatch[2]) {
+                return pathMatch[2];
+            }
+
+            // 3. Check hash: #/profile/km-2026-c1 or #/p/km-2026-c1 or #/profile/c1 or #/p/c1
+            const hash = globalThis.location.hash;
+            const hashMatch = hash.match(/\/(profile|p)\/(km-2026-[\w-]+|[\w-]+)/i);
+            if (hashMatch && hashMatch[2]) {
+                return hashMatch[2];
+            }
+
+            return null;
+        }
+
+        async function loadProfile() {
+            const profileId = getProfileIdFromUrl();
+
+            if (!profileId) {
+                showDefault();
+                return;
+            }
+
+            try {
+                const cleanId = profileId.replace('km-2026-', '');
+
+                const { data, error } = await supabase
+                    .from('profiles')
+                    .select('name, age, father_tharavadu, photo_url, gender, job')
+                    .eq('id', cleanId)
+                    .single();
+
+                if (error || !data) {
+                    console.error('Profile not found', error);
+                    showDefault();
+                    return;
+                }
+
+                // Update UI with profile data
+                document.getElementById('avatarContainer').innerHTML = `<img src="${data.photo_url}" alt="Profile" onerror="this.style.display=&quot;none&quot;; this.parentElement.innerHTML=&quot;<div class='icon-placeholder'>KM</div>&quot;">`;
+                document.getElementById('profileNameAge').innerText = `${data.name}, ${data.age}`;
+                document.getElementById('profileClan').innerText = `Lineage: ${data.father_tharavadu || 'N/A'}`;
+                document.getElementById('profileDetails').style.display = 'block';
+                document.getElementById('topBadge').innerText = 'MATRIMONIAL PROFILE';
+                document.getElementById('tagline').style.display = 'none';
+                document.getElementById('openApp').href = `kurichiyar-matrimony://profile?id=${profileId}`;
+
+                // Set dynamic SEO Title
+                const userName = data.name || 'User';
+                const taravadName = data.father_tharavadu || 'Kurichiyar';
+                const pageTitle = `${userName} | Kurichiyar Matrimony`;
+                document.title = pageTitle;
+
+                // Set dynamic SEO Description
+                const pageDesc = `Find alliance for ${userName} from ${taravadName} family lineage on Kurichiyar Matrimony.`;
+                document.querySelector('meta[name="description"]')?.setAttribute('content', pageDesc);
+
+                // Set dynamic SEO Keywords
+                const pageKeywords = `Kurichiyar, Matrimony, ${userName}, ${taravadName}, Wayanad marriage`;
+                document.querySelector('meta[name="keywords"]')?.setAttribute('content', pageKeywords);
+
+                // Canonical URL
+                const pageUrl = `${globalThis.location.origin}/profile/km-2026-${cleanId}`;
+                document.getElementById('canonicalUrl')?.setAttribute('href', pageUrl);
+
+                // OpenGraph Tags
+                document.querySelector('meta[property="og:title"]')?.setAttribute('content', pageTitle);
+                document.querySelector('meta[property="og:description"]')?.setAttribute('content', pageDesc);
+                document.querySelector('meta[property="og:url"]')?.setAttribute('content', pageUrl);
+                document.querySelector('meta[property="og:image"]')?.setAttribute('content', data.photo_url || '');
+                document.querySelector('meta[property="og:type"]')?.setAttribute('content', 'profile');
+
+                // Twitter Tags
+                document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', pageTitle);
+                document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', pageDesc);
+                document.querySelector('meta[name="twitter:image"]')?.setAttribute('content', data.photo_url || '');
+
+                // Schema.org structured data (JSON-LD)
+                const jsonLd = {
+                    "@context": "https://schema.org",
+                    "@type": "Person",
+                    "name": userName,
+                    "age": data.age,
+                    "gender": data.gender || "unknown",
+                    "jobTitle": data.job || "N/A",
+                    "memberOf": {
+                        "@type": "Organization",
+                        "name": "Kurichiyar Community"
+                    },
+                    "description": pageDesc,
+                    "image": data.photo_url || "",
+                    "url": pageUrl
+                };
+                const scriptTag = document.getElementById('structuredData');
+                if (scriptTag) {
+                    scriptTag.textContent = JSON.stringify(jsonLd, null, 2);
+                }
+
+                showContent();
+            } catch (e) {
+                console.error('Fetch error', e);
+                showDefault();
+            }
+        }
+
+        async function showDefault() {
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+            document.getElementById('profileDetails').style.display = 'none';
+            document.getElementById('tagline').style.display = 'block';
+            document.getElementById('topBadge').innerText = 'TRUSTED COMMUNITY NETWORK';
+            
+            const defaultTitle = "Kurichiyar Matrimony - Official Community App";
+            const defaultDesc = "Official Matrimonial portal for the Kurichiyar community. Find verified profiles, tharavadu-based matching, and direct messaging features.";
+            
+            document.title = defaultTitle;
+            document.querySelector('meta[name="description"]')?.setAttribute('content', defaultDesc);
+            document.querySelector('meta[name="keywords"]')?.setAttribute('content', "Kurichiyar, Matrimony, Wayanad marriage, tribal matrimony");
+            document.getElementById('canonicalUrl')?.setAttribute('href', globalThis.location.origin + globalThis.location.pathname);
+            
+            document.querySelector('meta[property="og:title"]')?.setAttribute('content', defaultTitle);
+            document.querySelector('meta[property="og:description"]')?.setAttribute('content', defaultDesc);
+            document.querySelector('meta[property="og:url"]')?.setAttribute('content', globalThis.location.href);
+            
+            document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', defaultTitle);
+            document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', defaultDesc);
+
+            // Clear person-specific structured data
+            const scriptTag = document.getElementById('structuredData');
+            if (scriptTag) scriptTag.textContent = '';
+
+            // Fetch public profiles for crawler discoverability
+            try {
+                const { data } = await supabase
+                    .from('profiles')
+                    .select('id, name, father_tharavadu')
+                    .eq('is_profile_hidden', false)
+                    .eq('account_status', 'approved')
+                    .eq('is_banned', false)
+                    .limit(20);
+
+                if (data && data.length > 0) {
+                    const listContainer = document.getElementById('directoryList');
+                    listContainer.innerHTML = '';
+                    data.forEach(p => {
+                        const profileUrl = `${globalThis.location.origin}/profile/km-2026-${p.id}`;
+                        const link = document.createElement('a');
+                        link.href = profileUrl;
+                        link.className = 'directory-link';
+                        link.innerHTML = `<strong>${p.name}</strong> <span class="directory-span">${p.father_tharavadu || ''}</span>`;
+                        listContainer.appendChild(link);
+                    });
+                    document.getElementById('directorySection').style.display = 'block';
+                }
+            } catch (e) {
+                console.error('Failed to load profile directory', e);
+            }
+        }
+
+        function showContent() {
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+            document.getElementById('directorySection').style.display = 'none';
+        }
+
+        async function fetchAppDownloadLink() {
+            try {
+                const { data, error } = await supabase
+                    .from('app_updates')
+                    .select('apk_url')
+                    .order('created_at', { ascending: false })
+                    .limit(1);
+
+                if (!error && data && data.length > 0 && data[0].apk_url) {
+                    const btn = document.getElementById('downloadAppBtn');
+                    if (btn) {
+                        btn.href = data[0].apk_url;
+                        btn.target = '_blank';
+                    }
+                }
+            } catch (err) {
+                console.error('Error fetching download link:', err);
+            }
+        }
+
+        globalThis.addEventListener('load', () => {
+            if (globalThis.supabase) {
+                supabase = globalThis.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+                loadProfile();
+                fetchAppDownloadLink();
+            }
+        });
+    </script>
+</body>
+</html>

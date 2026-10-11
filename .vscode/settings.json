@@ -1,0 +1,19 @@
+{
+  "java.configuration.updateBuildConfiguration": "disabled",
+  "java.import.gradle.enabled": false,
+  "java.import.maven.enabled": false,
+  "java.autobuild.enabled": false,
+  "java.import.exclusions": [
+    "**/node_modules/**",
+    "**/.metadata/**",
+    "**/archetype/**",
+    "**/META-INF/maven/**",
+    "**/kurichar_admin_panel/**",
+    "**/kurichiyar_admin_web/**",
+    "**/build/**"
+  ],
+  "cmake.sourceDirectory": "E:/kurichiyar matrimony/linux",
+  "files.associations": {
+    "*.sql": "postgres"
+  }
+}

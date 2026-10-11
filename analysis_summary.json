@@ -1,0 +1,147 @@
+{
+  "error_count": 4,
+  "warning_count": 2,
+  "info_count": 9,
+  "errors": [
+    {
+      "code": "undefined_method",
+      "severity": "ERROR",
+      "type": "COMPILE_TIME_ERROR",
+      "location": {
+        "file": "E:\\kurichiyar matrimony\\lib\\features\\profile_detail\\profile_detail_page.dart",
+        "range": {
+          "start": {
+            "offset": 12655,
+            "line": 332,
+            "column": 19
+          },
+          "end": {
+            "offset": 12686,
+            "line": 332,
+            "column": 50
+          }
+        }
+      },
+      "problemMessage": "The method '_buildAdminSubscriptionQuickBar' isn't defined for the type '_ProfileDetailPageState'.",
+      "correctionMessage": "Try correcting the name to the name of an existing method, or defining a method named '_buildAdminSubscriptionQuickBar'.",
+      "documentation": "https://dart.dev/diagnostics/undefined_method"
+    },
+    {
+      "code": "undefined_method",
+      "severity": "ERROR",
+      "type": "COMPILE_TIME_ERROR",
+      "location": {
+        "file": "E:\\kurichiyar matrimony\\lib\\features\\profile_detail\\profile_detail_page.dart",
+        "range": {
+          "start": {
+            "offset": 13097,
+            "line": 342,
+            "column": 19
+          },
+          "end": {
+            "offset": 13121,
+            "line": 342,
+            "column": 43
+          }
+        }
+      },
+      "problemMessage": "The method 'AdminKinshipEditorWidget' isn't defined for the type '_ProfileDetailPageState'.",
+      "correctionMessage": "Try correcting the name to the name of an existing method, or defining a method named 'AdminKinshipEditorWidget'.",
+      "documentation": "https://dart.dev/diagnostics/undefined_method"
+    },
+    {
+      "code": "undefined_getter",
+      "severity": "ERROR",
+      "type": "COMPILE_TIME_ERROR",
+      "location": {
+        "file": "E:\\kurichiyar matrimony\\lib\\features\\profile_detail\\widgets\\profile_info_grid_widget.dart",
+        "range": {
+          "start": {
+            "offset": 4229,
+            "line": 127,
+            "column": 40
+          },
+          "end": {
+            "offset": 4239,
+            "line": 127,
+            "column": 50
+          }
+        }
+      },
+      "problemMessage": "The getter 'profession' isn't defined for the type 'UserProfile'.",
+      "correctionMessage": "Try importing the library that defines 'profession', correcting the name to the name of an existing getter, or defining a getter or field named 'profession'.",
+      "documentation": "https://dart.dev/diagnostics/undefined_getter"
+    },
+    {
+      "code": "undefined_getter",
+      "severity": "ERROR",
+      "type": "COMPILE_TIME_ERROR",
+      "location": {
+        "file": "E:\\kurichiyar matrimony\\lib\\features\\profile_detail\\widgets\\profile_info_grid_widget.dart",
+        "range": {
+          "start": {
+            "offset": 4302,
+            "line": 128,
+            "column": 43
+          },
+          "end": {
+            "offset": 4312,
+            "line": 128,
+            "column": 53
+          }
+        }
+      },
+      "problemMessage": "The getter 'profession' isn't defined for the type 'UserProfile'.",
+      "correctionMessage": "Try importing the library that defines 'profession', correcting the name to the name of an existing getter, or defining a getter or field named 'profession'.",
+      "documentation": "https://dart.dev/diagnostics/undefined_getter"
+    }
+  ],
+  "warnings": [
+    {
+      "code": "unused_element",
+      "severity": "WARNING",
+      "type": "STATIC_WARNING",
+      "location": {
+        "file": "E:\\kurichiyar matrimony\\lib\\core\\services\\image_validation_service.dart",
+        "range": {
+          "start": {
+            "offset": 2410,
+            "line": 78,
+            "column": 15
+          },
+          "end": {
+            "offset": 2432,
+            "line": 78,
+            "column": 37
+          }
+        }
+      },
+      "problemMessage": "The declaration '_isImageBrightAndClear' isn't referenced.",
+      "correctionMessage": "Try removing the declaration of '_isImageBrightAndClear'.",
+      "documentation": "https://dart.dev/diagnostics/unused_element"
+    },
+    {
+      "code": "unused_element",
+      "severity": "WARNING",
+      "type": "STATIC_WARNING",
+      "location": {
+        "file": "E:\\kurichiyar matrimony\\lib\\core\\services\\image_validation_service.dart",
+        "range": {
+          "start": {
+            "offset": 2624,
+            "line": 84,
+            "column": 23
+          },
+          "end": {
+            "offset": 2648,
+            "line": 84,
+            "column": 47
+          }
+        }
+      },
+      "problemMessage": "The declaration '_callServerModerationAPI' isn't referenced.",
+      "correctionMessage": "Try removing the declaration of '_callServerModerationAPI'.",
+      "documentation": "https://dart.dev/diagnostics/unused_element"
+    }
+  ]
+}

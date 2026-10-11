@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "224732363568",
+    "project_id": "kurichya-matrimony",
+    "storage_bucket": "kurichya-matrimony.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:224732363568:android:c98056d0798d78038066f5",
+        "android_client_info": {
+          "package_name": "com.kurichiyar.matrimony"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "224732363568-2esu3ndodmul0j33u4fub8cpfsj263k6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFLKV01T-XGVmHEV6QlBRHkVcaHejs0hc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "224732363568-2esu3ndodmul0j33u4fub8cpfsj263k6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:224732363568:android:983a195f86fae3a38066f5",
+        "android_client_info": {
+          "package_name": "com.kurichya.matrimony"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "224732363568-2esu3ndodmul0j33u4fub8cpfsj263k6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFLKV01T-XGVmHEV6QlBRHkVcaHejs0hc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "224732363568-2esu3ndodmul0j33u4fub8cpfsj263k6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
